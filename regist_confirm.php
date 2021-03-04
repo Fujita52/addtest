@@ -13,38 +13,51 @@
 
     <div class="confirm">
 
-        <p>名前（姓）:
-            <?php echo $_POST['family_name']."<br>"; 
+        <p>名前(姓):
+            <?php echo $_POST['family_name'].'<br>';
+            mb_regex_encoding("UTF-8");
+             $family_name = $_POST['family_name'];
+            if(!preg_match("/^[ぁ-んァ-ヶー一-龠]+$/u",$family_name)) {
+               echo $error = '<font color="red">日本語のみ使用可能です。</font>';    
+            }
             if(empty($_POST['family_name'])){
-                echo '<font color="red">名前（姓）が未入力です</font>';
+                echo $error ='<font color="red">名前（姓）が未入力です。</font>';
             }
             ?>
         </p>
 
-        <p>名前（名）:
+        <p>名前(名):
             <?php echo $_POST['last_name']."<br>"; 
+            mb_regex_encoding("UTF-8");
+             $last_name = $_POST['last_name'];
+            if(!preg_match("/^[ぁ-んァ-ヶー一-龠]+$/u",$last_name)) {
+               echo $error = '<font color="red">日本語のみ使用可能です。</font>'; }
             if(empty($_POST['last_name'])){
-                 echo '<font color="red">名前（名）が未入力です</font>';
+                 echo $error ='<font color="red">名前（名）が未入力です。</font>';
             }?>
         </p>
 
         <p>カナ（姓）:
             <?php echo $_POST['family_name_kana']."<br>"; 
             if(empty($_POST['family_name_kana'])){
-             echo '<font color="red">カナ（姓）が未入力です</font>';
+             echo $error ='<font color="red">カナ（姓）が未入力です。</font>';
             }?>
         </p>
 
         <p>カナ（名）:
             <?php echo $_POST['last_name_kana']."<br>";
             if(empty($_POST['last_name_kana'])){
-              echo '<font color="red">カナ（名）が未入力です</font>'; 
+              echo $error ='<font color="red">カナ（名）が未入力です。</font>'; 
             }?>
         </p>
         <p>メールアドレス:
-            <?php echo $_POST['mail']."<br>";
+            <?php echo $_POST['mail'];
+            $mail=$_POST['mail'];
+            if(!preg_match('|^[0-9a-z_./?-]+@([0-9a-z-]+\.)+[0-9a-z-]+$|',$mail)){
+                print $error ='<p><font color="red">メールアドレスが正しくありません。</font></p>';
+            }
              if(empty($_POST['mail'])){
-                 echo '<font color="red">メールアドレスが未入力です</font>';
+                 echo $error ='<font color="red">メールアドレスが未入力です。</font>';
              }?>
         </p>
         <p>パスワード:
@@ -55,26 +68,31 @@
                 echo "●";
             };
              if(empty($_POST['password'])){
-               echo '<font color="red">パスワードが未入力です</font>';
+               echo $error ='<font color="red">パスワードが未入力です。</font>';
              }?>
         </p>
         <p>性別:
             <?php 
-            $gender=$_POST['gender']; 
-            switch($gender){
-                case 0:
-                    echo "男";
-                    break;
-                case 1:
-                    echo "女";
-                    break;
-            }
+            if($_POST['gender']==="0"){echo '男';}
+            else{echo '女';}
             ?>
         </p>
         <p>郵便番号:
-            <?php echo $_POST['postal_code']."<br>";
+            <?php 
+//            if (preg_match("/^[0-9]+$/", $postal_code)) {
+// $postal_code = $_POST['postal_code'];
+// $postal_code = $_POST['postal_code'];
+//                echo $postal_code;
+//}else{
+// $error = '郵便番号は半角数字で登録してください。';
+//}
+            echo $_POST['postal_code'];
+            $postal_code=$_POST['postal_code'];
+            if(!preg_match("/^[0-9]{0,7}+$/",$postal_code)){
+                print $error ='<p><font color="red">郵便番号は正しくありません。</font></p>';}
+            
              if(empty($_POST['postal_code'])){
-                 echo '<font color="red">郵便番号が未入力です</font>';
+                 echo $error ='<font color="red">郵便番号が未入力です。</font>';
              }?>
         </p>
         <p>住所（都道府県）
@@ -223,40 +241,51 @@
                     break;
             }
              if(empty($_POST['prefecture'])){
-           echo '<font color="red">住所（都道府県）が未入力です</font>';
+           echo $error ='<font color="red">住所（都道府県）が未入力です</font>';
              }
             ?>
         </p>
         <p>住所（市区町村）:
             <?php echo $_POST['address_1']."<br>";
+                mb_regex_encoding("UTF-8");
+             $address_1 = $_POST['address_1'];
+            if(!preg_match("/^[ぁ-んァ-ヶー一-龠0-9]+$/u",$address_1)) {
+               echo $error = '<font color="red">ひらがな、カタカナ、漢字、半角数字、記号（ハイフン）のみ使用可能です。</font>'; }
+                
              if(empty($_POST['address_1'])){
-              echo '<font color="red">住所（市区町村）が未入力です</font>';
+              echo $error='<font color="red">住所（市区町村）が未入力です</font>';
              }
             ?>
         </p>
         <p>住所（番地）:
             <?php echo $_POST['address_2']."<br>";
+              mb_regex_encoding("UTF-8");
+             $address_1 = $_POST['address_1'];
+            if(!preg_match("/^[ぁ-んァ-ヶー一-龠0-9]+$/u",$address_1)) {
+               echo $error = '<font color="red">ひらがな、カタカナ、漢字、半角数字、記号（ハイフン）のみ使用可能です。</font>'; }
             if(empty($_POST['address_2'])){
-               echo '<font color="red">住所（番地）が未入力です</font>';
+               echo $error='<font color="red">住所（番地）が未入力です</font>';
             }
             ?>
         </p>
         <p>アカウント権限:
-            <?php $authority=$_POST['authority'];
-            switch($authority){
-                case 0:
-                    echo "一般";
-                    break;
-                case 1:
-                    echo "管理者";
-                    break;
-            }
+            <?php if($_POST['authority']==='0'){echo '一般';}else{echo '管理者';}
             ?>
         </p>
+        <style>
+            .hide {
+                display: none;
+            }
 
+        </style>
+        <?php 
+        $class="";
+        if(!empty($error)) $class="hide";
+        ?>
         <form action="regist_complete.php" method="post">
-            <input type="submit" value="登録する" class="button">
+            <input type="submit" id="accept" value="登録する" class="<?php echo $class; ?>">
             <input type="hidden" value="<?php echo $_POST['family_name']; ?>" name="family_name">
+            <input type="hidden" value="<?php echo $_POST['last_name']; ?>" name="last_name">
             <input type="hidden" value="<?php echo $_POST['last_name']; ?>" name="last_name">
             <input type="hidden" value="<?php echo $_POST['family_name_kana']; ?>" name="family_name_kana">
             <input type="hidden" value="<?php echo $_POST['last_name_kana']; ?>" name="last_name_kana">

@@ -40,8 +40,8 @@
             echo $_POST["password"];} ?>">
         </p>
         <p>性別
-            <input type="radio" name="gender" value="0" checked="checked"> 男
-            <input type="radio" name="gender" value="1">女
+            <input type="radio" name="gender" value="0" <?php if( !empty($_POST['gender']) && $_POST['gender'] === "0" ){ echo 'checked'; } ?> checked="checked"> 男
+            <input type="radio" name="gender" value="1" <?php if( !empty($_POST['gender']) && $_POST['gender'] === "1" ){ echo 'checked'; } ?>>女
         </p>
         <p>郵便番号
             <input type="number" name="postal_code" size="8" maxlength="7" value="<?php if(isset($_POST["postal_code"])){
@@ -51,8 +51,8 @@
 
 
         <p><select name="prefecture">
-                <option value="disabled" style="display:none;" <?php if(empty($_POST['prefecture'])) echo 'selected'; ?>>選択してください</option>
-                <option value="1" <?php echo array_key_exists('prefecture',$_POST)&& $_POST['prefecture']=='1'?'selected':'';?>>北海道</option>
+                <option value="0" style="display:none;" <?php if(empty($_POST['prefecture'])) echo 'selected'; ?>>選択してください</option>
+                <option value="1" <?php if( !empty($_POST['prefecture']) && $_POST['prefecture'] === "1" ){ echo 'selected'; } ?>>北海道</option>
                 <option value="2" <?php echo array_key_exists('prefecture',$_POST)&& $_POST['prefecture']=='2'?'selected':'';?>>青森県</option>
                 <option value="3" <?php echo array_key_exists('prefecture',$_POST)&& $_POST['prefecture']=='3'?'selected':'';?>>岩手県</option>
                 <option value="4" <?php echo array_key_exists('prefecture',$_POST)&& $_POST['prefecture']=='4'?'selected':'';?>>宮城県</option>
@@ -112,8 +112,8 @@
         </p>
         <p>アカウント権限
             <select name="authority">
-                <option value="0" selected>一般</option>
-                <option value="1">管理者</option>
+                <option value="0" <?php echo array_key_exists('authority',$_POST)&& $_POST['authority']=='0'?'selected':'';?> selected>一般</option>
+                <option value="1" <?php echo array_key_exists('authority',$_POST)&& $_POST['authority']=='1'?'selected':'';?>>管理者</option>
             </select>
         </p>
         <input type="submit" value="確認する" class="submit">
