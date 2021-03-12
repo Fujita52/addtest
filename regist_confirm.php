@@ -37,14 +37,14 @@
             }?>
         </p>
 
-        <p>カナ（姓）:
+        <p>カナ(姓):
             <?php echo $_POST['family_name_kana']."<br>"; 
             if(empty($_POST['family_name_kana'])){
              echo $error ='<font color="red">カナ（姓）が未入力です。</font>';
             }?>
         </p>
 
-        <p>カナ（名）:
+        <p>カナ(名):
             <?php echo $_POST['last_name_kana']."<br>";
             if(empty($_POST['last_name_kana'])){
               echo $error ='<font color="red">カナ（名）が未入力です。</font>'; 
@@ -54,7 +54,7 @@
             <?php echo $_POST['mail'];
             $mail=$_POST['mail'];
             if(!preg_match('|^[0-9a-z_./?-]+@([0-9a-z-]+\.)+[0-9a-z-]+$|',$mail)){
-                print $error ='<p><font color="red">メールアドレスが正しくありません。</font></p>';
+                print $error ='<font color="red">メールアドレスが正しくありません。</font>';
             }
              if(empty($_POST['mail'])){
                  echo $error ='<font color="red">メールアドレスが未入力です。</font>';
@@ -79,23 +79,18 @@
         </p>
         <p>郵便番号:
             <?php 
-//            if (preg_match("/^[0-9]+$/", $postal_code)) {
-// $postal_code = $_POST['postal_code'];
-// $postal_code = $_POST['postal_code'];
-//                echo $postal_code;
-//}else{
-// $error = '郵便番号は半角数字で登録してください。';
-//}
             echo $_POST['postal_code'];
             $postal_code=$_POST['postal_code'];
-            if(!preg_match("/^[0-9]{0,7}+$/",$postal_code)){
-                print $error ='<p><font color="red">郵便番号は正しくありません。</font></p>';}
-            
+            $limit=7;
+            $postal_codeLength=strlen($postal_code);
+            if(!preg_match("/^[0-9]+$/",$postal_code)||($limit<$postal_codeLength || $postal_codeLength < $limit)){
+                print $error ='<font color="red">:郵便番号は正しくありません。</font>';}
+          
              if(empty($_POST['postal_code'])){
                  echo $error ='<font color="red">郵便番号が未入力です。</font>';
              }?>
         </p>
-        <p>住所（都道府県）
+        <p>住所(都道府県):
             <?php  $prefecture=$_POST['prefecture']; 
             switch($prefecture){
                 case 1:
@@ -245,7 +240,7 @@
              }
             ?>
         </p>
-        <p>住所（市区町村）:
+        <p>住所(市区町村):
             <?php echo $_POST['address_1']."<br>";
                 mb_regex_encoding("UTF-8");
              $address_1 = $_POST['address_1'];
@@ -257,7 +252,7 @@
              }
             ?>
         </p>
-        <p>住所（番地）:
+        <p>住所(番地):
             <?php echo $_POST['address_2']."<br>";
               mb_regex_encoding("UTF-8");
              $address_1 = $_POST['address_1'];
@@ -272,6 +267,9 @@
             <?php if($_POST['authority']==='0'){echo '一般';}else{echo '管理者';}
             ?>
         </p>
+
+
+
         <style>
             .hide {
                 display: none;
@@ -297,6 +295,7 @@
             <input type="hidden" value="<?php echo $_POST['address_1']; ?>" name="address_1">
             <input type="hidden" value="<?php echo $_POST['address_2']; ?>" name="address_2">
             <input type="hidden" value="<?php echo $_POST['authority']; ?>" name="authority">
+            <input type="hidden" value="<?php echo $_POST['delete_flag']; ?>" name="delete_flag">
         </form>
 
         <form action="regist.php" method="post">

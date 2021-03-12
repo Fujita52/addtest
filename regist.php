@@ -36,7 +36,7 @@
             echo $_POST["mail"];} ?>">
         </p>
         <p>パスワード
-            <input type="text" class="text" name="password" size="35" maxlength="10" pattern=^[0-9A-Za-z]+$ value="<?php if(isset($_POST["password"])){
+            <input type="text" class="text" name="password" size="35" maxlength="100" pattern=^[0-9A-Za-z]+$ value="<?php if(isset($_POST["password"])){
             echo $_POST["password"];} ?>">
         </p>
         <p>性別
@@ -44,13 +44,13 @@
             <input type="radio" name="gender" value="1" <?php if( !empty($_POST['gender']) && $_POST['gender'] === "1" ){ echo 'checked'; } ?>>女
         </p>
         <p>郵便番号
-            <input type="number" name="postal_code" size="8" maxlength="7" value="<?php if(isset($_POST["postal_code"])){
+            <input type="number" name="postal_code" size="8" value="<?php if(isset($_POST["postal_code"])){
             echo $_POST["postal_code"];} ?>">
         </p>
-        <p>住所（都道府県）
 
 
-        <p><select name="prefecture">
+
+        <p>住所（都道府県）:<select name="prefecture">
                 <option value="0" style="display:none;" <?php if(empty($_POST['prefecture'])) echo 'selected'; ?>>選択してください</option>
                 <option value="1" <?php if( !empty($_POST['prefecture']) && $_POST['prefecture'] === "1" ){ echo 'selected'; } ?>>北海道</option>
                 <option value="2" <?php echo array_key_exists('prefecture',$_POST)&& $_POST['prefecture']=='2'?'selected':'';?>>青森県</option>
@@ -116,6 +116,8 @@
                 <option value="1" <?php echo array_key_exists('authority',$_POST)&& $_POST['authority']=='1'?'selected':'';?>>管理者</option>
             </select>
         </p>
+        <!--        削除フラグが裏で送られてきている-->
+        <input type="hidden" value="0" name="delete_flag">
         <input type="submit" value="確認する" class="submit">
     </form>
 
