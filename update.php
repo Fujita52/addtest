@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <?php
-
+echo $_POST['id'];
+$id=$_POST['id'];
 mb_internal_encoding("utf8");
 $pdo = new PDO("mysql:dbname=lesson01;host=localhost","root","");
 
-$stmt= $pdo->query("select id from addtest");
+$stmt= $pdo->query("select * from addtest where id=$id");
 
 
 ?>
@@ -17,11 +18,18 @@ $stmt= $pdo->query("select id from addtest");
 
 <body>
     <h1>アカウント更新画面</h1>
-    <form action="update_confirm.php" method="post">
-        <p>名前（姓）
-            <input type="text" class="text" name="family_name" size="35" maxlength="10" value="<?php if(!empty($_POST["family_name"])){
-            echo $_POST["family_name"];} ?>">
+    <form action="update.php" method="post">
+        <?php
+        while($row=$stmt->fetch()):
+            ?>
+        <p>名前(姓):
+            <input type="text" class="text" name="family_name" size="35" maxlength="10" value="<?php
+            echo $row['family_name']; ?>">
         </p>
+
+
+        <?php endwhile; 
+        ?>
     </form>
 </body>
 

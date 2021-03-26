@@ -20,7 +20,7 @@ $stmt= $pdo->query("select*from addtest");
         <h3>登録情報一覧</h3>
         <div class="contents">
             <table border="1" width="100%">
-                <tr>
+                <tr background-color="skyblue">
                     <th scope="col">ID</th>
                     <th scope="col">名前(姓)</th>
                     <th scope="col">名前(名)</th>
@@ -229,18 +229,25 @@ $stmt= $pdo->query("select*from addtest");
     echo "<td>".$row['registered_time']."</td>";
     echo "<td>".$row['update_time']."</td>";
     ?>
-                <form action="update.php" method="post">
-                    <td>
-                        <input type="submit" value="更新" name="update">
-                    </td>
-                    <td>
-                        <input type="submit" value="削除" name="delete">
-                    </td>
-                </form>
+
+                <td>
+                    <form action="update.php" method="post">
+                        <input type="submit" value="更新">
+                        <input type="hidden" value="<?php echo $row['id']; ?>" name="id">
+                    </form>
+                </td>
+                <td>
+                    <form action="delete.php" method="post">
+                        <input type="submit" value="削除">
+                        <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                        <input type="hidden" name="family_name" value="<?php echo $row['family_name']; ?>">
+                    </form>
+                </td>
                 <?php  
-    echo "</tr>";
-    }
-    ?>
+                echo "</tr>";
+    }?>
+
+
             </table>
         </div>
     </div>
