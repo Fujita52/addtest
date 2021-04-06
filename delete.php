@@ -240,7 +240,7 @@ $stmt= $pdo->query("select * from addtest where id=$id");
         </form>
         <form action="delete_confirm.php" method="post">
 
-            <input type="text" name="id" value="<?php echo $_POST['id']; ?>">
+            <input type="hidden" name="id" value="<?php echo $_POST['id']; ?>">
 
             <input type="submit" value="確認する">
         </form>

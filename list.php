@@ -48,7 +48,15 @@ $stmt= $pdo->query("select*from addtest");
     echo "<td>".$row['family_name_kana']."</td>";
     echo "<td>".$row['last_name_kana']."</td>";
     echo "<td>".$row['mail']."</td>";
-    echo "<td>".$row['password']."</td>";
+        ?>
+                <?php
+            $str=$row['password'];
+            echo "<td>";
+            for($i = 0;$i<strlen($str);$i++){
+                echo "●";
+            }
+            echo "</td>";
+//        ●と同じ場所にtd書くとtdまでループ化されてしまったので外に書いています
         ?>
                 <?php 
     $gender=$row['gender'];
@@ -240,7 +248,6 @@ $stmt= $pdo->query("select*from addtest");
                     <form action="delete.php" method="post">
                         <input type="submit" value="削除">
                         <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-                        <input type="hidden" name="family_name" value="<?php echo $row['family_name']; ?>">
                     </form>
                 </td>
                 <?php  

@@ -1,9 +1,9 @@
 <?php
 echo $_POST['id'];
 $id=$_POST['id'];
+//var_dump($_POST, $id);
 $pdo = new PDO("mysql:dbname=lesson01;host=localhost","root","");
-$pdo ->exec("update addtest set delete_flag =1 where id=$id;
-");
+$pdo ->exec("update addtest set delete_flag =1 where id=$id;");
 ?>
 <!doctype HTML>
 <html lang="ja">
@@ -15,6 +15,9 @@ $pdo ->exec("update addtest set delete_flag =1 where id=$id;
 
 <body>
     <h1>削除完了しました</h1>
+    <form action="index.html">
+        <input type="submit" value="トップページに戻る">
+    </form>
 
 </body>
 

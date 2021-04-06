@@ -284,7 +284,6 @@
             <input type="submit" id="accept" value="登録する" class="<?php echo $class; ?>">
             <input type="hidden" value="<?php echo $_POST['family_name']; ?>" name="family_name">
             <input type="hidden" value="<?php echo $_POST['last_name']; ?>" name="last_name">
-            <input type="hidden" value="<?php echo $_POST['last_name']; ?>" name="last_name">
             <input type="hidden" value="<?php echo $_POST['family_name_kana']; ?>" name="family_name_kana">
             <input type="hidden" value="<?php echo $_POST['last_name_kana']; ?>" name="last_name_kana">
             <input type="hidden" value="<?php echo $_POST['mail']; ?>" name="mail">

@@ -27,7 +27,7 @@
         <input type="hidden" name="id" value="<?php echo $_POST['id'] ?>">
         <input type="submit" value="前に戻る">
     </form>
-    <form action="delete_complete.php" 　method="post">
+    <form action="delete_complete.php" method="post">
         <input type="submit" value="削除する">
         <input type="hidden" name="id" value="<?php echo $_POST['id']; ?>">
     </form>
