@@ -39,6 +39,10 @@
 
         <p>カナ(姓):
             <?php echo $_POST['family_name_kana']."<br>"; 
+            mb_regex_encoding("UTF-8");
+            $family_name_kana=$_POST['family_name_kana'];
+            if(!preg_match("/^[ァ-ヶーー]+$/u",$family_name_kana)){
+                echo $error = '<font color="red">カタカナのみ使用可能です。</font>'; }
             if(empty($_POST['family_name_kana'])){
              echo $error ='<font color="red">カナ（姓）が未入力です。</font>';
             }?>
@@ -46,6 +50,10 @@
 
         <p>カナ(名):
             <?php echo $_POST['last_name_kana']."<br>";
+              mb_regex_encoding("UTF-8");
+            $last_name_kana=$_POST['last_name_kana'];
+            if(!preg_match("/^[ァ-ヶーー]+$/u",$last_name_kana)){
+                echo $error = '<font color="red">カタカナのみ使用可能です。</font>'; }
             if(empty($_POST['last_name_kana'])){
               echo $error ='<font color="red">カナ（名）が未入力です。</font>'; 
             }?>
@@ -67,6 +75,10 @@
                 ;$i++){
                 echo "●";
             };
+             mb_regex_encoding("UTF-8");
+            $password=$_POST['password'];
+            if(!preg_match("/^[0-9A-Za-z]+$/u",$password)){
+                echo $error = '<font color="red">アルファベット・英数字のみ使用可能です。</font>'; }
              if(empty($_POST['password'])){
                echo $error ='<font color="red">パスワードが未入力です。</font>';
              }?>

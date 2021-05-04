@@ -1,5 +1,5 @@
 <?php
-echo $_POST['id'];
+//echo $_POST['id'];
 $id=$_POST['id'];
 //var_dump($_POST, $id);
 $pdo = new PDO("mysql:dbname=lesson01;host=localhost","root","");

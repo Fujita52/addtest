@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<?php echo $_POST['id']; ?>
+<?php
+//echo $_POST['id'];
+?>
 <html lang="ja">
 
 <head>

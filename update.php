@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-echo $_POST['id'];
+//echo $_POST['id'];
 $id=$_POST['id'];
 mb_internal_encoding("utf8");
 $pdo = new PDO("mysql:dbname=lesson01;host=localhost","root","");
@@ -124,6 +124,9 @@ $stmt= $pdo->query("select * from addtest where id=$id");
         ?>
         <input type="hidden" name="id" value="<?php echo $_POST['id']; ?>">
         <input type="submit" value="確認する" class="submit">
+    </form>
+    <form action="list.php">
+        <input type="submit" value="一覧に戻る" class="submit">
     </form>
 
 </body>

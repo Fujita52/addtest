@@ -244,6 +244,9 @@ $stmt= $pdo->query("select * from addtest where id=$id");
 
             <input type="submit" value="確認する">
         </form>
+        <form action="list.php">
+            <input type="submit" value="一覧に戻る" class="submit">
+        </form>
     </div>
 
 </body>

@@ -30,6 +30,10 @@ $pdo ->exec("update addtest set family_name='$family_name',last_name='$last_name
 
 <body>
     <h1>更新完了しました</h1>
+    <form action="index.html">
+        <input type="submit" value="トップページに戻る">
+    </form>
+
 
 </body>
 

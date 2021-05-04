@@ -24,19 +24,19 @@
             echo $_POST["last_name"];} ?>">
         </p>
         <p>カナ（姓）
-            <input type="text" class="text" name="family_name_kana" size="35" maxlength="10" pattern="[ァ-ン]*" value="<?php if(isset($_POST["family_name_kana"])){
+            <input type="text" class="text" name="family_name_kana" size="35" maxlength="10" value="<?php if(isset($_POST["family_name_kana"])){
             echo $_POST["family_name_kana"];} ?>">
         </p>
         <p>カナ（名）
-            <input type="text" class="text" name="last_name_kana" size="35" maxlength="10" pattern="[ァ-ン]*" value="<?php if(isset($_POST["last_name_kana"])){
+            <input type="text" class="text" name="last_name_kana" size="35" maxlength="10" value="<?php if(isset($_POST["last_name_kana"])){
             echo $_POST["last_name_kana"];} ?>">
         </p>
         <p>メールアドレス
-            <input type="email" class="text" name="mail" size="35" maxlength="100" value="<?php if(isset($_POST["mail"])){
+            <input type="text" class="text" name="mail" size="35" maxlength="100" value="<?php if(isset($_POST["mail"])){
             echo $_POST["mail"];} ?>">
         </p>
         <p>パスワード
-            <input type="text" class="text" name="password" size="35" maxlength="100" pattern=^[0-9A-Za-z]+$ value="<?php if(isset($_POST["password"])){
+            <input type="text" class="text" name="password" size="35" maxlength="100" value="<?php if(isset($_POST["password"])){
             echo $_POST["password"];} ?>">
         </p>
         <p>性別
