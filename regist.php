@@ -119,8 +119,12 @@
         <!--        削除フラグが裏で送られてきている-->
         <input type="hidden" value="0" name="delete_flag">
         <input type="submit" value="確認する" class="submit">
+       
     </form>
+<form action="index.php">
+        <input type="submit" value="最初のページに戻る" class="button">
 
+    </form>
 </body>
 
 </html>

@@ -8,7 +8,8 @@ $last_name=$_POST['last_name'];
 $family_name_kana=$_POST['family_name_kana'];
 $last_name_kana=$_POST['last_name_kana'];
 $mail=$_POST['mail'];
-$password=$_POST['password'];
+//$password=$_POST['password'];
+$password = password_hash($_POST['password'], PASSWORD_DEFAULT)
 $gender=$_POST['gender'];
 $postal_code=$_POST['postal_code'];
 $prefecture=$_POST['prefecture'];
@@ -30,7 +31,7 @@ $pdo ->exec("update addtest set family_name='$family_name',last_name='$last_name
 
 <body>
     <h1>更新完了しました</h1>
-    <form action="index.html">
+    <form action="index.php">
         <input type="submit" value="トップページに戻る">
     </form>
 

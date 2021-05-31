@@ -324,6 +324,10 @@
             <input type="hidden" value="<?php echo $_POST['address_2']; ?>" name="address_2">
             <input type="hidden" value="<?php echo $_POST['authority']; ?>" name="authority">
         </form>
+        <form action="index.html">
+            <input type="submit" value="最初のページに戻る" class="button">
+
+        </form>
     </div>
 
 </body>

@@ -111,7 +111,7 @@ $stmt= $pdo->query("select*from addtest order by ID desc");
             </table>
         </div>
     </div>
-    <a href="index.html">トップに戻る</a>
+    <a href="index.php">トップに戻る</a>
 </body>
 
 </html>
